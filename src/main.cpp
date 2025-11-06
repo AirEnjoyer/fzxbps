@@ -14,13 +14,12 @@ int main(int argc, char *argv[]) {
       std::string arg1 = argv[1];
       if (arg1 == "-i") {
         query = "xbps-query -Rs '*' | awk '{print $2}' | fzf --prompt=\"Select "
-                "package(s) to install: \" --multi --margin 10% --padding 10% "
+                "package(s) to install: \" --multi "
                 "--border | xargs -ro sudo xbps-install -Sy";
       } else if (arg1 == "-r") {
-        query =
-            "xbps-query -m | xargs -n1 xbps-uhelper getpkgname | fzf "
-            "--prompt=\"Select package(s) to remove: \" --multi --margin 10% "
-            "--padding 10% --border | xargs -ro doas xbps-remove -Ro";
+        query = "xbps-query -m | xargs -n1 xbps-uhelper getpkgname | fzf "
+                "--prompt=\"Select package(s) to remove: \" --multi "
+                "--border | xargs -ro doas xbps-remove -Ro";
       }
     } else {
       std::cerr << "Usage: sudo fzxbps -i (install) or -r (remove)\n";
