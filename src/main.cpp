@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
       } else if (arg1 == "-r") {
         query = "xbps-query -m | xargs -n1 xbps-uhelper getpkgname | fzf "
                 "--prompt=\"Select package(s) to remove: \" --multi "
-                "--border | xargs -ro doas xbps-remove -Ro";
+                "--border | xargs -ro xbps-remove -Ro";
       }
     } else {
       std::cerr << "Usage: sudo fzxbps -i (install) or -r (remove)\n";
